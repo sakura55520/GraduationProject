@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
 import SearchBar from '@ant-design/react-native/lib/search-bar';
 import WingBlank from '@ant-design/react-native/lib/wing-blank';
 import Flex from '@ant-design/react-native/lib/flex/Flex';
@@ -8,6 +8,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import CommodityDetail from '../CommodityDetail';
 import Icon from '@ant-design/react-native/lib/icon';
 import Commodity from '../../components/Commodity';
+import Card from '@ant-design/react-native/lib/card';
+import WhiteSpace from '@ant-design/react-native/lib/white-space';
 
 const Stack = createStackNavigator();
 const Home = ({navigation}: {navigation: any}) => {
@@ -22,31 +24,43 @@ const Home = ({navigation}: {navigation: any}) => {
       <SearchBar defaultValue="" placeholder="搜索" />
       <ScrollView style={{flex: 1}}>
         <Swiper style={styles.wrapper} showsButtons={true} autoplay={true}>
-          <View style={styles.slide1}>
-            <Text style={styles.text}>Hello Swiper</Text>
+          <View style={styles.slider}>
+            <Image
+              source={require('../../assets/pic2.jpg')}
+              style={styles.sliderImg}
+            />
           </View>
-          <View style={styles.slide2}>
-            <Text style={styles.text}>Beautiful</Text>
+          <View style={styles.slider}>
+            <Image
+              source={require('../../assets/pic2.jpg')}
+              style={styles.sliderImg}
+            />
           </View>
-          <View style={styles.slide3}>
-            <Text style={styles.text}>And simple</Text>
+          <View style={styles.slider}>
+            <Image
+              source={require('../../assets/pic2.jpg')}
+              style={styles.sliderImg}
+            />
           </View>
         </Swiper>
+        <WhiteSpace />
         <WingBlank style={{marginBottom: 5}}>
-          <Flex justify="around">
-            <Icon name="account-book" size="sm" />
-            <Icon name="account-book" size="sm" />
-            <Icon name="account-book" size="sm" />
-            <Icon name="account-book" size="sm" />
-            <Icon name="account-book" size="sm" />
-          </Flex>
-          <Flex justify="around">
-            <Icon name="account-book" size="sm" />
-            <Icon name="account-book" size="sm" />
-            <Icon name="account-book" size="sm" />
-            <Icon name="account-book" size="sm" />
-            <Icon name="account-book" size="sm" />
-          </Flex>
+          <Card>
+            <Flex justify="around" style={styles.icon}>
+              <Icon name="account-book" size="sm" />
+              <Icon name="account-book" size="sm" />
+              <Icon name="account-book" size="sm" />
+              <Icon name="account-book" size="sm" />
+              <Icon name="account-book" size="sm" />
+            </Flex>
+            <Flex justify="around" style={styles.icon}>
+              <Icon name="account-book" size="sm" />
+              <Icon name="account-book" size="sm" />
+              <Icon name="account-book" size="sm" />
+              <Icon name="account-book" size="sm" />
+              <Icon name="account-book" size="sm" />
+            </Flex>
+          </Card>
         </WingBlank>
         <WingBlank size="lg">
           <Flex wrap="wrap" justify="around">
@@ -69,33 +83,22 @@ const styles = StyleSheet.create({
   wrapper: {
     height: 200,
   },
-  slide1: {
+  slider: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
   },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
+  sliderImg: {
+    width: undefined,
+    height: 300,
+    resizeMode: 'stretch',
   },
   center: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  icon: {
+    marginTop: 5,
+    marginBottom: 5,
   },
 });
 export default HomePage;

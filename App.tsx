@@ -3,7 +3,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 import HomePage from './pages/HomePage/HomePage';
-import Layout from './layouts/index';
 import Search from './pages/Search/Search';
 import Community from './pages/Community/Community';
 import Friends from './pages/Friends/Friends';

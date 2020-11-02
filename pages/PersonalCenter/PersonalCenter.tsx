@@ -7,6 +7,7 @@ import WingBlank from '@ant-design/react-native/lib/wing-blank';
 import React, {useEffect} from 'react';
 import {View, Image, ScrollView, Text, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
+import {scaleSizeW} from '../../utils/screen';
 
 interface PersonalCenterProps {
   dispatch: any;
@@ -33,27 +34,49 @@ const PersonalCenter = (props: PersonalCenterProps) => {
         <WhiteSpace />
         <Card>
           <Card.Body>
-            <View style={{height: 42}}>
+            <View style={{height: 100}}>
               <Image
-                source={{
-                  uri:
-                    'https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png',
-                }}
-                style={{width: 29, height: 29}}
+                source={require('../../assets/ava.jpg')}
+                style={styles.avatar}
               />
             </View>
           </Card.Body>
-          <Card.Footer content="iphone11热卖" extra="" />
+          <Card.Footer content="未登录" extra="" />
         </Card>
         <WhiteSpace />
         <List>
-          <Item thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png">
-            {props.loading}
+          <Item
+            thumb={
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.icon}
+              />
+            }>
+            <View>
+              <Text style={styles.iconText}>余额</Text>
+            </View>
           </Item>
           <Item
-            thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png"
-            arrow="horizontal">
-            thumb
+            thumb={
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.icon}
+              />
+            }>
+            <View>
+              <Text style={styles.iconText}>收藏</Text>
+            </View>
+          </Item>
+          <Item
+            thumb={
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.icon}
+              />
+            }>
+            <View>
+              <Text style={styles.iconText}>充值</Text>
+            </View>
           </Item>
         </List>
         <WhiteSpace />
@@ -91,6 +114,20 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
   },
+  avatar: {
+    width: scaleSizeW(150),
+    aspectRatio: 1,
+    height: undefined,
+    marginLeft: '2%',
+    borderRadius: scaleSizeW(75),
+  },
+  icon: {
+    width: scaleSizeW(50),
+    aspectRatio: 1,
+    height: undefined,
+    borderRadius: scaleSizeW(25),
+  },
+  iconText: {marginLeft: 10, fontSize: 20},
 });
 
 export default connect((state: any) => ({
