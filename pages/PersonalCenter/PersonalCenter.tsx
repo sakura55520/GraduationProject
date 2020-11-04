@@ -1,4 +1,5 @@
 import Card from '@ant-design/react-native/lib/card';
+import Flex from '@ant-design/react-native/lib/flex/Flex';
 import List from '@ant-design/react-native/lib/list';
 import Item from '@ant-design/react-native/lib/list/ListItem';
 import {Tabs} from '@ant-design/react-native/lib/tabs/Tabs';
@@ -19,7 +20,7 @@ interface PersonalCenterProps {
 const PersonalCenter = (props: PersonalCenterProps) => {
   useEffect(() => {
     props.dispatch({
-      type: 'user/setName',
+      type: 'user/getUserName',
     });
   }, []);
   const tabs = [
@@ -34,53 +35,23 @@ const PersonalCenter = (props: PersonalCenterProps) => {
         <WhiteSpace />
         <Card>
           <Card.Body>
-            <View style={{height: 100}}>
-              <Image
-                source={require('../../assets/ava.jpg')}
-                style={styles.avatar}
-              />
-            </View>
+            <Flex>
+              <View style={{height: 100}}>
+                <Image
+                  source={require('../../assets/ava.jpg')}
+                  style={styles.avatar}
+                />
+                <Text>{props.user.name}</Text>
+              </View>
+              <View style={{marginLeft:'50%'}}>
+                <Text style={{fontSize: 20}}>设置</Text>
+              </View>
+            </Flex>
           </Card.Body>
-          <Card.Footer content="未登录" extra="" />
+          <Card.Footer extra="" />
         </Card>
         <WhiteSpace />
-        <List>
-          <Item
-            thumb={
-              <Image
-                source={require('../../assets/ava.jpg')}
-                style={styles.icon}
-              />
-            }>
-            <View>
-              <Text style={styles.iconText}>余额</Text>
-            </View>
-          </Item>
-          <Item
-            thumb={
-              <Image
-                source={require('../../assets/ava.jpg')}
-                style={styles.icon}
-              />
-            }>
-            <View>
-              <Text style={styles.iconText}>收藏</Text>
-            </View>
-          </Item>
-          <Item
-            thumb={
-              <Image
-                source={require('../../assets/ava.jpg')}
-                style={styles.icon}
-              />
-            }>
-            <View>
-              <Text style={styles.iconText}>充值</Text>
-            </View>
-          </Item>
-        </List>
-        <WhiteSpace />
-        <Card style={{height: 500}}>
+        <Card style={{height: 150}}>
           <View style={styles.logistics}>
             <Tabs tabs={tabs}>
               <View style={styles.tab}>
@@ -98,6 +69,81 @@ const PersonalCenter = (props: PersonalCenterProps) => {
             </Tabs>
           </View>
         </Card>
+        <WhiteSpace />
+        <List>
+          <Item
+            thumb={
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.icon}
+              />
+            }
+            arrow="horizontal">
+            <View>
+              <Text style={styles.iconText}>全部订单</Text>
+            </View>
+          </Item>
+          <Item
+            thumb={
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.icon}
+              />
+            }
+            arrow="horizontal">
+            <View>
+              <Text style={styles.iconText}>地址管理</Text>
+            </View>
+          </Item>
+          <Item
+            thumb={
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.icon}
+              />
+            }
+            arrow="horizontal">
+            <View>
+              <Text style={styles.iconText}>实名认证</Text>
+            </View>
+          </Item>
+          <Item
+            thumb={
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.icon}
+              />
+            }
+            arrow="horizontal">
+            <View>
+              <Text style={styles.iconText}>我的收藏</Text>
+            </View>
+          </Item>
+          <Item
+            thumb={
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.icon}
+              />
+            }
+            arrow="horizontal">
+            <View>
+              <Text style={styles.iconText}>支付方式</Text>
+            </View>
+          </Item>
+          <Item
+            thumb={
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.icon}
+              />
+            }
+            arrow="horizontal">
+            <View>
+              <Text style={styles.iconText}>联系客服</Text>
+            </View>
+          </Item>
+        </List>
       </WingBlank>
     </ScrollView>
   );
@@ -127,7 +173,7 @@ const styles = StyleSheet.create({
     height: undefined,
     borderRadius: scaleSizeW(25),
   },
-  iconText: {marginLeft: 10, fontSize: 20},
+  iconText: {marginLeft: 10, fontSize: 15},
 });
 
 export default connect((state: any) => ({

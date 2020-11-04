@@ -11,6 +11,7 @@ import Icon from '@ant-design/react-native/lib/icon';
 import indexModel from './models/index';
 import {Provider} from 'react-redux';
 import {create} from 'dva-core-ts';
+import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
 
 const models: any = [indexModel];
 
@@ -61,6 +62,7 @@ export default class App extends React.Component {
             <Tab.Screen name="搜索" component={Search} />
             <Tab.Screen name="社区" component={Community} />
             <Tab.Screen name="好友" component={Friends} />
+            <Tab.Screen name="购物车" component={ShoppingCart} />
             <Tab.Screen name="我的淘宝" component={PersonalCenter} />
           </Tab.Navigator>
         </NavigationContainer>
