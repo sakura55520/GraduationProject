@@ -14,7 +14,6 @@ interface PersonalCenterProps {
   dispatch: any;
   navigation: any;
   user: any;
-  loading: boolean;
 }
 
 const PersonalCenter = (props: PersonalCenterProps) => {
@@ -159,6 +158,7 @@ const styles = StyleSheet.create({
   logistics: {
     flex: 1,
     margin: 5,
+    overflow:'hidden'
   },
   avatar: {
     width: scaleSizeW(150),
@@ -178,5 +178,4 @@ const styles = StyleSheet.create({
 
 export default connect((state: any) => ({
   user: state.user,
-  loading: state.loading,
 }))(PersonalCenter);

@@ -8,12 +8,14 @@ import Community from './pages/Community/Community';
 import Friends from './pages/Friends/Friends';
 import PersonalCenter from './pages/PersonalCenter/PersonalCenter';
 import Icon from '@ant-design/react-native/lib/icon';
-import indexModel from './models/index';
 import {Provider} from 'react-redux';
 import {create} from 'dva-core-ts';
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
 
-const models: any = [indexModel];
+import userModel from './models/user';
+import guideModel from './models/guide';
+
+const models: any = [userModel, guideModel];
 
 const app = create();
 
@@ -28,7 +30,7 @@ const store = app._store; // 获取redux的store对象供react-redux使用
 
 const Tab = createBottomTabNavigator();
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
@@ -70,3 +72,4 @@ export default class App extends React.Component {
     );
   }
 }
+export default App;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
 import SearchBar from '@ant-design/react-native/lib/search-bar';
 import WingBlank from '@ant-design/react-native/lib/wing-blank';
@@ -10,6 +10,8 @@ import Icon from '@ant-design/react-native/lib/icon';
 import Commodity from '../../components/Commodity';
 import Card from '@ant-design/react-native/lib/card';
 import WhiteSpace from '@ant-design/react-native/lib/white-space';
+import {connect} from 'react-redux';
+import GuidePage from '../GuidePage/GuidePage';
 
 const Stack = createStackNavigator();
 const Home = ({navigation}: {navigation: any}) => {
@@ -19,6 +21,18 @@ const Home = ({navigation}: {navigation: any}) => {
       <Commodity navigation={navigation} key={i} title={i.toString()} />,
     );
   }
+  const categories = [
+    '上装',
+    '下装',
+    '鞋靴',
+    '数码',
+    '手机',
+    '美妆',
+    '电器',
+    '食品',
+    '饰品',
+    '医药',
+  ];
   return (
     <>
       <SearchBar defaultValue="" placeholder="搜索" />
@@ -26,19 +40,19 @@ const Home = ({navigation}: {navigation: any}) => {
         <Swiper style={styles.wrapper} showsButtons={true} autoplay={true}>
           <View style={styles.slider}>
             <Image
-              source={require('../../assets/pic2.jpg')}
+              source={require('../../assets/ava.jpg')}
               style={styles.sliderImg}
             />
           </View>
           <View style={styles.slider}>
             <Image
-              source={require('../../assets/pic2.jpg')}
+              source={require('../../assets/ava.jpg')}
               style={styles.sliderImg}
             />
           </View>
           <View style={styles.slider}>
             <Image
-              source={require('../../assets/pic2.jpg')}
+              source={require('../../assets/ava.jpg')}
               style={styles.sliderImg}
             />
           </View>
@@ -46,19 +60,13 @@ const Home = ({navigation}: {navigation: any}) => {
         <WhiteSpace />
         <WingBlank style={{marginBottom: 5}}>
           <Card>
-            <Flex justify="around" style={styles.icon}>
-              <Icon name="account-book" size="sm" />
-              <Icon name="account-book" size="sm" />
-              <Icon name="account-book" size="sm" />
-              <Icon name="account-book" size="sm" />
-              <Icon name="account-book" size="sm" />
-            </Flex>
-            <Flex justify="around" style={styles.icon}>
-              <Icon name="account-book" size="sm" />
-              <Icon name="account-book" size="sm" />
-              <Icon name="account-book" size="sm" />
-              <Icon name="account-book" size="sm" />
-              <Icon name="account-book" size="sm" />
+            <Flex wrap="wrap" justify="around" style={styles.icon}>
+              {categories.map((category: string) => (
+                <View style={styles.category}>
+                  <Icon name="account-book" size="sm" />
+                  <Text>{category}</Text>
+                </View>
+              ))}
             </Flex>
           </Card>
         </WingBlank>
@@ -71,12 +79,33 @@ const Home = ({navigation}: {navigation: any}) => {
     </>
   );
 };
-const HomePage = () => {
+
+interface HomePageProps {
+  guide: any;
+  dispatch: any;
+}
+
+const HomePage = (props: HomePageProps) => {
+  // useEffect(() => {
+  //   props.dispatch({
+  //     type: 'guide/setLoading',
+  //     payload: true,
+  //   });
+  //   setTimeout(() => {
+  //     props.dispatch({
+  //       type: 'guide/setLoading',
+  //       payload: false,
+  //     });
+  //   }, 3000);
+  // }, []);
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="首页" component={Home} />
-      <Stack.Screen name="商品" component={CommodityDetail} />
-    </Stack.Navigator>
+    <>
+      {props.guide.loading ? <GuidePage /> : null}
+      <Stack.Navigator>
+        <Stack.Screen name="首页" component={Home} />
+        <Stack.Screen name="商品" component={CommodityDetail} />
+      </Stack.Navigator>
+    </>
   );
 };
 const styles = StyleSheet.create({
@@ -100,5 +129,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
   },
+  category: {
+    width: '20%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding:5
+  },
 });
-export default HomePage;
+export default connect((state: any) => ({
+  guide: state.guide,
+}))(HomePage);

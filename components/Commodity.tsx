@@ -11,13 +11,12 @@ const Commodity = (props: CommodityProps) => (
     onPress={() => props.navigation.navigate('商品')}
     style={styles.commodity}>
     <Card>
-      <Card.Header title="韩国东大门 北京天安门潮牌" extra="" />
-      <Card.Body>
-        <View>
-          <Image source={require('../assets/pic2.jpg')} style={styles.img} />
-        </View>
-      </Card.Body>
-      <Card.Footer content="韩国东大门 北京天安门潮牌" extra="" />
+      <View>
+        <Image source={require('../assets/pic2.jpg')} style={styles.img} />
+      </View>
+      <Text>韩国东大门 北京天安门潮牌</Text>
+      <Text>潮流 | INS</Text>
+      <Text>1999.00    2000人付款              杭州</Text>
     </Card>
   </TouchableOpacity>
 );

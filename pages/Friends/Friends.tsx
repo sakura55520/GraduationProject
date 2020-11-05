@@ -10,7 +10,7 @@ const Friends = ({navigation}: {navigation: any}) => {
   const chatboxs = [];
   for (let i = 0; i < 10; i++) {
     chatboxs.push(
-      <Item>
+      <Item key={i}>
         <Image
           source={require('../../assets/ava.jpg')}
           style={styles.friendAvatar}
