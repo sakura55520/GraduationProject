@@ -6,7 +6,14 @@ import {Tabs} from '@ant-design/react-native/lib/tabs/Tabs';
 import WhiteSpace from '@ant-design/react-native/lib/white-space';
 import WingBlank from '@ant-design/react-native/lib/wing-blank';
 import React, {useEffect} from 'react';
-import {View, Image, ScrollView, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Image,
+  ScrollView,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import {connect} from 'react-redux';
 import {scaleSizeW} from '../../utils/screen';
 
@@ -42,7 +49,7 @@ const PersonalCenter = (props: PersonalCenterProps) => {
                 />
                 <Text>{props.user.name}</Text>
               </View>
-              <View style={{marginLeft:'50%'}}>
+              <View style={{marginLeft: '50%'}}>
                 <Text style={{fontSize: 20}}>设置</Text>
               </View>
             </Flex>
@@ -77,7 +84,8 @@ const PersonalCenter = (props: PersonalCenterProps) => {
                 style={styles.icon}
               />
             }
-            arrow="horizontal">
+            arrow="horizontal"
+            onPress={() => props.navigation.navigate('全部订单')}>
             <View>
               <Text style={styles.iconText}>全部订单</Text>
             </View>
@@ -89,7 +97,8 @@ const PersonalCenter = (props: PersonalCenterProps) => {
                 style={styles.icon}
               />
             }
-            arrow="horizontal">
+            arrow="horizontal"
+            onPress={() => props.navigation.navigate('地址管理')}>
             <View>
               <Text style={styles.iconText}>地址管理</Text>
             </View>
@@ -101,7 +110,8 @@ const PersonalCenter = (props: PersonalCenterProps) => {
                 style={styles.icon}
               />
             }
-            arrow="horizontal">
+            arrow="horizontal"
+            onPress={() => props.navigation.navigate('实名认证')}>
             <View>
               <Text style={styles.iconText}>实名认证</Text>
             </View>
@@ -113,7 +123,8 @@ const PersonalCenter = (props: PersonalCenterProps) => {
                 style={styles.icon}
               />
             }
-            arrow="horizontal">
+            arrow="horizontal"
+            onPress={() => props.navigation.navigate('我的收藏')}>
             <View>
               <Text style={styles.iconText}>我的收藏</Text>
             </View>
@@ -125,7 +136,8 @@ const PersonalCenter = (props: PersonalCenterProps) => {
                 style={styles.icon}
               />
             }
-            arrow="horizontal">
+            arrow="horizontal"
+            onPress={() => props.navigation.navigate('支付方式')}>
             <View>
               <Text style={styles.iconText}>支付方式</Text>
             </View>
@@ -137,7 +149,8 @@ const PersonalCenter = (props: PersonalCenterProps) => {
                 style={styles.icon}
               />
             }
-            arrow="horizontal">
+            arrow="horizontal"
+            onPress={() => props.navigation.navigate('联系客服')}>
             <View>
               <Text style={styles.iconText}>联系客服</Text>
             </View>
@@ -158,7 +171,7 @@ const styles = StyleSheet.create({
   logistics: {
     flex: 1,
     margin: 5,
-    overflow:'hidden'
+    overflow: 'hidden',
   },
   avatar: {
     width: scaleSizeW(150),

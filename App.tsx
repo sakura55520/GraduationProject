@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage/HomePage';
 import Search from './pages/Search/Search';
 import Community from './pages/Community/Community';
 import Friends from './pages/Friends/Friends';
-import PersonalCenter from './pages/PersonalCenter/PersonalCenter';
+import PersonalCenter from './pages/PersonalCenter/index';
 import Icon from '@ant-design/react-native/lib/icon';
 import {Provider} from 'react-redux';
 import {create} from 'dva-core-ts';
