@@ -62,7 +62,7 @@ const Home = ({navigation}: {navigation: any}) => {
           <Card>
             <Flex wrap="wrap" justify="around" style={styles.icon}>
               {categories.map((category: string) => (
-                <View style={styles.category}>
+                <View style={styles.category} key={category}>
                   <Icon name="account-book" size="sm" />
                   <Text>{category}</Text>
                 </View>

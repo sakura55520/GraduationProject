@@ -1,4 +1,5 @@
 import Card from '@ant-design/react-native/lib/card';
+import Flex from '@ant-design/react-native/lib/flex/Flex';
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
@@ -14,9 +15,15 @@ const Commodity = (props: CommodityProps) => (
       <View>
         <Image source={require('../assets/pic2.jpg')} style={styles.img} />
       </View>
-      <Text>韩国东大门 北京天安门潮牌</Text>
-      <Text>潮流 | INS</Text>
-      <Text>1999.00    2000人付款              杭州</Text>
+      <View style={{padding: 5}}>
+        <Text>韩国东大门 北京天安门潮牌</Text>
+        <Text>潮流 | INS</Text>
+        <Flex style={{justifyContent: 'space-between'}}>
+          <Text>1999.00</Text>
+          <Text>2000人付款</Text>
+          <Text>杭州</Text>
+        </Flex>
+      </View>
     </Card>
   </TouchableOpacity>
 );
