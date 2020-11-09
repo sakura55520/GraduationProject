@@ -10,10 +10,11 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import {scaleSizeW} from '../../utils/screen';
 import CommodityDetail from '../CommodityDetail';
 import Flex from '@ant-design/react-native/lib/flex/Flex';
 import Button from '@ant-design/react-native/lib/button';
+import Radio from '@ant-design/react-native/lib/radio/Radio';
+import WingBlank from '@ant-design/react-native/lib/wing-blank';
 
 const Stack = createStackNavigator();
 
@@ -22,14 +23,37 @@ const ShoppingCart = ({navigation}: {navigation: any}) => {
   const chatboxs = [];
   for (let i = 0; i < 10; i++) {
     chatboxs.push(
-      <TouchableOpacity onPress={() => navigation.navigate('商品')} key={i}>
-        <Card style={styles.shoppingList}>
-          <Image
-            source={require('../../assets/ava.jpg')}
-            style={styles.friendAvatar}
-          />
-        </Card>
-      </TouchableOpacity>,
+      <Card style={styles.shoppingList} key={i}>
+        <Flex justify="start">
+          <Radio
+            style={{
+              borderWidth: 1,
+              borderColor: '#999',
+              margin: 10,
+              width: '15%',
+            }}>
+            选择
+          </Radio>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('商品')}
+            style={{width: '85%'}}>
+            <Flex justify="between">
+              <Image
+                source={require('../../assets/pic2.jpg')}
+                style={styles.pic}
+              />
+              <View>
+                <Text style={{marginBottom: 20}}>iphone12</Text>
+                <Text style={{marginBottom: 20}}>黑色;L</Text>
+                <Text>&yen;118</Text>
+              </View>
+              <View>
+                <Text>&times;1</Text>
+              </View>
+            </Flex>
+          </TouchableOpacity>
+        </Flex>
+      </Card>,
     );
   }
   const onSwitchChange = (value: boolean) => {
@@ -38,16 +62,16 @@ const ShoppingCart = ({navigation}: {navigation: any}) => {
   return (
     <>
       <ScrollView style={{flex: 1}}>
-        <Card style={styles.usercard}>
-          <Card.Body>
-            <Image
-              source={require('../../assets/ava.jpg')}
-              style={styles.friendAvatar}
-            />
-            <Text>未登录</Text>
-          </Card.Body>
-        </Card>
-        <View>{chatboxs}</View>
+        <Flex style={styles.usercard} justify="between">
+          <Flex>
+            <Text style={{marginLeft: 5}}>共0件宝贝</Text>
+            <Text style={{marginLeft: 10}}>收货地址：123</Text>
+          </Flex>
+          <Text style={{marginRight: 5}}>管理</Text>
+        </Flex>
+        <WingBlank size="sm">
+          <View>{chatboxs}</View>
+        </WingBlank>
       </ScrollView>
       <Flex justify="between" style={{height: 50}}>
         <Flex>
@@ -78,20 +102,20 @@ const ShoppingCartPage = () => {
 
 const styles = StyleSheet.create({
   usercard: {
-    marginTop: 10,
-    height: 120,
-    marginBottom: 10,
+    height: 50,
   },
-  friendAvatar: {
-    width: scaleSizeW(100),
-    aspectRatio: 1,
-    height: undefined,
+  pic: {
+    width: '30%',
+    height: 150,
+    resizeMode: 'cover',
     marginLeft: '2%',
-    borderRadius: scaleSizeW(50),
+    marginTop: '2%',
   },
   shoppingList: {
+    justifyContent: 'center',
     height: 200,
-    marginBottom: 20,
+    marginBottom: 5,
+    borderRadius: 10,
   },
 });
 export default ShoppingCartPage;

@@ -19,7 +19,7 @@ const Commodity = (props: CommodityProps) => (
         <Text>韩国东大门 北京天安门潮牌</Text>
         <Text>潮流 | INS</Text>
         <Flex style={{justifyContent: 'space-between'}}>
-          <Text>1999.00</Text>
+          <Text>&yen;1999.00</Text>
           <Text>2000人付款</Text>
           <Text>杭州</Text>
         </Flex>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   img: {
     width: undefined,
     height: 300,
-    resizeMode: 'stretch',
+    resizeMode: 'cover',
   },
 });
 

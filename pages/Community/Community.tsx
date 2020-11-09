@@ -17,7 +17,7 @@ const Community = ({navigation}: {navigation: any}) => {
     <>
       <SearchBar defaultValue="" placeholder="搜索" />
       <ScrollView style={{flex: 1}}>
-        <WingBlank size="lg">
+        <WingBlank size="sm">
           <Flex wrap="wrap" justify="around">
             {Dynamics}
           </Flex>

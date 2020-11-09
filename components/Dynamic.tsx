@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   img: {
     width: undefined,
     height: 300,
-    resizeMode: 'stretch',
+    resizeMode: 'cover',
   },
   ava: {
     width: scaleSizeW(50),

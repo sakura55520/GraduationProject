@@ -6,14 +6,7 @@ import {Tabs} from '@ant-design/react-native/lib/tabs/Tabs';
 import WhiteSpace from '@ant-design/react-native/lib/white-space';
 import WingBlank from '@ant-design/react-native/lib/wing-blank';
 import React, {useEffect} from 'react';
-import {
-  View,
-  Image,
-  ScrollView,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Image, ScrollView, Text, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {scaleSizeW} from '../../utils/screen';
 
@@ -37,24 +30,21 @@ const PersonalCenter = (props: PersonalCenterProps) => {
   ];
   return (
     <ScrollView style={{flex: 1}}>
-      <WingBlank>
+      <WingBlank size="sm">
         <WhiteSpace />
-        <Card>
-          <Card.Body>
-            <Flex>
-              <View style={{height: 100}}>
-                <Image
-                  source={require('../../assets/ava.jpg')}
-                  style={styles.avatar}
-                />
-                <Text>{props.user.name}</Text>
-              </View>
-              <View style={{marginLeft: '50%'}}>
-                <Text style={{fontSize: 20}}>设置</Text>
-              </View>
-            </Flex>
-          </Card.Body>
-          <Card.Footer extra="" />
+        <Card style={{height: 150, justifyContent: 'center'}}>
+          <Flex justify="between">
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.avatar}
+              />
+              <Text>{props.user.name}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 20, marginRight: 20}}>设置</Text>
+            </View>
+          </Flex>
         </Card>
         <WhiteSpace />
         <Card style={{height: 150}}>

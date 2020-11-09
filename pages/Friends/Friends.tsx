@@ -1,4 +1,5 @@
 import Card from '@ant-design/react-native/lib/card';
+import Flex from '@ant-design/react-native/lib/flex/Flex';
 import List from '@ant-design/react-native/lib/list';
 import Item from '@ant-design/react-native/lib/list/ListItem';
 import SearchBar from '@ant-design/react-native/lib/search-bar';
@@ -17,10 +18,22 @@ const Friends = ({navigation}: {navigation: any}) => {
     chatboxs.push(
       <TouchableOpacity onPress={() => navigation.navigate('聊天框')} key={i}>
         <Item>
-          <Image
-            source={require('../../assets/ava.jpg')}
-            style={styles.friendAvatar}
-          />
+          <Flex justify="between">
+            <Flex>
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.friendAvatar}
+              />
+              <View style={{marginLeft: 5}}>
+                <Text>老铁</Text>
+                <Text>在吗铁汁</Text>
+              </View>
+            </Flex>
+            <View>
+              <Text>20/11/9</Text>
+              <Text></Text>
+            </View>
+          </Flex>
         </Item>
       </TouchableOpacity>,
     );
@@ -30,13 +43,20 @@ const Friends = ({navigation}: {navigation: any}) => {
       <SearchBar defaultValue="" placeholder="搜索" />
       <ScrollView style={{flex: 1}}>
         <Card style={styles.usercard}>
-          <Card.Body>
-            <Image
-              source={require('../../assets/ava.jpg')}
-              style={styles.friendAvatar}
-            />
-            <Text>未登录</Text>
-          </Card.Body>
+          <Flex justify="between">
+            <View style={{marginLeft: 10, alignItems: 'center'}}>
+              <Image
+                source={require('../../assets/ava.jpg')}
+                style={styles.friendAvatar}
+              />
+              <Text style={{marginTop: 3}}>未登录</Text>
+            </View>
+            <View style={{marginRight: 10}}>
+              <Text style={{marginBottom: 10}}>设置</Text>
+              <Text style={{marginBottom: 10}}>添加好友</Text>
+              <Text>我的好友</Text>
+            </View>
+          </Flex>
         </Card>
         <List>{chatboxs}</List>
       </ScrollView>
@@ -55,15 +75,15 @@ const FriendsPage = () => {
 
 const styles = StyleSheet.create({
   usercard: {
-    marginTop: 10,
+    marginTop: 5,
     height: 120,
-    marginBottom: 10,
+    marginBottom: 5,
+    justifyContent: 'center',
   },
   friendAvatar: {
     width: scaleSizeW(100),
     aspectRatio: 1,
     height: undefined,
-    marginLeft: '2%',
     borderRadius: scaleSizeW(50),
   },
 });

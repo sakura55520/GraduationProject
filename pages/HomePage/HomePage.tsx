@@ -58,7 +58,7 @@ const Home = ({navigation}: {navigation: any}) => {
           </View>
         </Swiper>
         <WhiteSpace />
-        <WingBlank style={{marginBottom: 5}}>
+        <WingBlank style={{marginBottom: 5}} size='sm'>
           <Card>
             <Flex wrap="wrap" justify="around" style={styles.icon}>
               {categories.map((category: string) => (
@@ -70,7 +70,7 @@ const Home = ({navigation}: {navigation: any}) => {
             </Flex>
           </Card>
         </WingBlank>
-        <WingBlank size="lg">
+        <WingBlank size="sm">
           <Flex wrap="wrap" justify="around">
             {commoditys}
           </Flex>
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   sliderImg: {
     width: undefined,
     height: 300,
-    resizeMode: 'stretch',
+    resizeMode: 'cover',
   },
   center: {
     flex: 1,
