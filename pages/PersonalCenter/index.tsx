@@ -9,6 +9,7 @@ const PersonalCenterPage = () => {
     <Stack.Navigator>
       <Stack.Screen name="个人中心" component={PersonalCenter} />
       <Stack.Screen name="全部订单" component={CommodityDetail} />
+      <Stack.Screen name="商品" component={CommodityDetail} />
       <Stack.Screen name="地址管理" component={CommodityDetail} />
       <Stack.Screen name="实名认证" component={CommodityDetail} />
       <Stack.Screen name="我的收藏" component={CommodityDetail} />

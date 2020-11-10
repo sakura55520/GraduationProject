@@ -13,8 +13,8 @@ import {
 import CommodityDetail from '../CommodityDetail';
 import Flex from '@ant-design/react-native/lib/flex/Flex';
 import Button from '@ant-design/react-native/lib/button';
-import Radio from '@ant-design/react-native/lib/radio/Radio';
 import WingBlank from '@ant-design/react-native/lib/wing-blank';
+import RadioView from '../../components/RadioView';
 
 const Stack = createStackNavigator();
 
@@ -25,18 +25,12 @@ const ShoppingCart = ({navigation}: {navigation: any}) => {
     chatboxs.push(
       <Card style={styles.shoppingList} key={i}>
         <Flex justify="start">
-          <Radio
-            style={{
-              borderWidth: 1,
-              borderColor: '#999',
-              margin: 10,
-              width: '15%',
-            }}>
-            选择
-          </Radio>
+          <View style={{padding: 15}}>
+            <RadioView />
+          </View>
           <TouchableOpacity
             onPress={() => navigation.navigate('商品')}
-            style={{width: '85%'}}>
+            style={{width: '90%'}}>
             <Flex justify="between">
               <Image
                 source={require('../../assets/pic2.jpg')}
@@ -47,7 +41,7 @@ const ShoppingCart = ({navigation}: {navigation: any}) => {
                 <Text style={{marginBottom: 20}}>黑色;L</Text>
                 <Text>&yen;118</Text>
               </View>
-              <View>
+              <View style={{marginRight: 20}}>
                 <Text>&times;1</Text>
               </View>
             </Flex>
@@ -108,8 +102,6 @@ const styles = StyleSheet.create({
     width: '30%',
     height: 150,
     resizeMode: 'cover',
-    marginLeft: '2%',
-    marginTop: '2%',
   },
   shoppingList: {
     justifyContent: 'center',

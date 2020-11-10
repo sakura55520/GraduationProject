@@ -6,7 +6,15 @@ import {Tabs} from '@ant-design/react-native/lib/tabs/Tabs';
 import WhiteSpace from '@ant-design/react-native/lib/white-space';
 import WingBlank from '@ant-design/react-native/lib/wing-blank';
 import React, {useEffect} from 'react';
-import {View, Image, ScrollView, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Image,
+  ScrollView,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import Swiper from 'react-native-swiper';
 import {connect} from 'react-redux';
 import {scaleSizeW} from '../../utils/screen';
 
@@ -17,6 +25,27 @@ interface PersonalCenterProps {
 }
 
 const PersonalCenter = (props: PersonalCenterProps) => {
+  const logistics = [];
+  for (let i = 0; i < 10; i++) {
+    logistics.push(
+      <TouchableOpacity
+        key={i}
+        style={styles.logisticsbox}
+        onPress={() => props.navigation.navigate('商品')}>
+        <Flex justify="between">
+          <Image source={require('../../assets/pic2.jpg')} style={styles.pic} />
+          <View>
+            <Text style={{marginBottom: 20}}>iphone12</Text>
+            <Text style={{marginBottom: 20}}>黑色;L</Text>
+            <Text>&yen;118</Text>
+          </View>
+          <View>
+            <Text>&times;1</Text>
+          </View>
+        </Flex>
+      </TouchableOpacity>,
+    );
+  }
   useEffect(() => {
     props.dispatch({
       type: 'user/getUserName',
@@ -47,21 +76,16 @@ const PersonalCenter = (props: PersonalCenterProps) => {
           </Flex>
         </Card>
         <WhiteSpace />
-        <Card style={{height: 150}}>
+        <Card style={{height: 170}}>
           <View style={styles.logistics}>
             <Tabs tabs={tabs}>
-              <View style={styles.tab}>
-                <Text>待付款</Text>
-              </View>
-              <View style={styles.tab}>
-                <Text>待发货</Text>
-              </View>
-              <View style={styles.tab}>
-                <Text>待收货</Text>
-              </View>
-              <View style={styles.tab}>
-                <Text>已完成</Text>
-              </View>
+              <Swiper
+                showsButtons={true}
+                autoplay={true}
+                showsPagination={false}
+                autoplayTimeout={4}>
+                {logistics}
+              </Swiper>
             </Tabs>
           </View>
         </Card>
@@ -152,12 +176,6 @@ const PersonalCenter = (props: PersonalCenterProps) => {
 };
 
 const styles = StyleSheet.create({
-  tab: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 150,
-    backgroundColor: '#fff',
-  },
   logistics: {
     flex: 1,
     margin: 5,
@@ -177,6 +195,17 @@ const styles = StyleSheet.create({
     borderRadius: scaleSizeW(25),
   },
   iconText: {marginLeft: 10, fontSize: 15},
+  pic: {
+    width: '20%',
+    height: 100,
+    resizeMode: 'cover',
+    marginLeft: '2%',
+    marginTop: '2%',
+  },
+  logisticsbox: {
+    paddingLeft: 30,
+    paddingRight: 30,
+  },
 });
 
 export default connect((state: any) => ({
