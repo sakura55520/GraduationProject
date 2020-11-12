@@ -6,6 +6,7 @@ import Flex from '@ant-design/react-native/lib/flex/Flex';
 import DynamicDetail from '../DynamicDetail';
 import {createStackNavigator} from '@react-navigation/stack';
 import Dynamic from '../../components/Dynamic';
+import CommodityDetail from '../CommodityDetail';
 
 const Stack = createStackNavigator();
 const Community = ({navigation}: {navigation: any}) => {
@@ -31,6 +32,7 @@ const CommunityPage = () => {
     <Stack.Navigator>
       <Stack.Screen name="社区" component={Community} />
       <Stack.Screen name="动态" component={DynamicDetail} />
+      <Stack.Screen name="商品" component={CommodityDetail} />
     </Stack.Navigator>
   );
 };
