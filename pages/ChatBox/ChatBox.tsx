@@ -1,10 +1,18 @@
 import React from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import Flex from '@ant-design/react-native/lib/flex/Flex';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import Card from '@ant-design/react-native/lib/card';
 import WingBlank from '@ant-design/react-native/lib/wing-blank';
+import Flex from '@ant-design/react-native/lib/flex/Flex';
 
 const ChatBox = () => {
+  const [value, onChangeText] = React.useState('请输入');
   return (
     <>
       <View
@@ -39,6 +47,25 @@ const ChatBox = () => {
           </View>
         </WingBlank>
       </ScrollView>
+      <Flex style={{height: 60, justifyContent: 'center', width: '100%'}}>
+        <Flex
+          style={{
+            width: '90%',
+            backgroundColor: '#fff',
+            borderRadius: 20,
+            justifyContent: 'center',
+          }}>
+          <TextInput
+            style={{
+              width: '95%',
+              height: 40,
+              backgroundColor: '#fff',
+            }}
+            onChangeText={(text) => onChangeText(text)}
+            value={value}
+          />
+        </Flex>
+      </Flex>
     </>
   );
 };

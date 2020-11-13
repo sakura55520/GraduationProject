@@ -17,9 +17,30 @@ const CommodityDetail = () => {
         showsButtons={true}
         autoplay={true}
         autoplayTimeout={4}>
-        <View>
-          <Text>123</Text>
-        </View>
+        <Swiper
+          style={styles.wrapper}
+          showsButtons={true}
+          autoplay={true}
+          autoplayTimeout={4}>
+          <View style={styles.slider}>
+            <Image
+              source={require('../../assets/ava.jpg')}
+              style={styles.sliderImg}
+            />
+          </View>
+          <View style={styles.slider}>
+            <Image
+              source={require('../../assets/ava.jpg')}
+              style={styles.sliderImg}
+            />
+          </View>
+          <View style={styles.slider}>
+            <Image
+              source={require('../../assets/ava.jpg')}
+              style={styles.sliderImg}
+            />
+          </View>
+        </Swiper>
       </Swiper>
       <WingBlank size="sm">
         <Card>
@@ -82,6 +103,13 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     height: undefined,
     borderRadius: scaleSizeW(25),
+  },
+  slider: {
+    flex: 1,
+  },
+  sliderImg: {
+    width: undefined,
+    resizeMode: 'cover',
   },
 });
 export default CommodityDetail;

@@ -22,11 +22,42 @@ const DynamicDetail = ({navigation}: {navigation: any}) => {
         showsButtons={true}
         autoplay={true}
         autoplayTimeout={4}>
-        <View>
-          <Text>123</Text>
+        <View style={styles.slider}>
+          <Image
+            source={require('../../assets/ava.jpg')}
+            style={styles.sliderImg}
+          />
+        </View>
+        <View style={styles.slider}>
+          <Image
+            source={require('../../assets/ava.jpg')}
+            style={styles.sliderImg}
+          />
+        </View>
+        <View style={styles.slider}>
+          <Image
+            source={require('../../assets/ava.jpg')}
+            style={styles.sliderImg}
+          />
         </View>
       </Swiper>
       <WingBlank size="sm">
+        <Card>
+          <Flex style={styles.user}>
+            <View>
+              <Flex>
+                <Image
+                  source={require('../../assets/ava.jpg')}
+                  style={styles.ava}
+                />
+                <Text style={{marginLeft: '5%', fontSize: 16}}>龙泽球</Text>
+              </Flex>
+            </View>
+            <Text>1000.0万粉丝</Text>
+            <Text style={{marginLeft: 15}}>大V淘主</Text>
+          </Flex>
+        </Card>
+        <WhiteSpace />
         <TouchableOpacity onPress={() => navigation.navigate('商品')}>
           <Card
             style={{
@@ -47,17 +78,18 @@ const DynamicDetail = ({navigation}: {navigation: any}) => {
         </TouchableOpacity>
         <WhiteSpace />
         <Card>
-          <View style={{marginLeft: 10}}>
-            <Text style={{marginTop: 5}}>666</Text>
-            <Flex>
-              <Image
-                source={require('../../assets/ava.jpg')}
-                style={styles.avatar}
-              />
-              <Text style={{marginLeft: 5}}>龙泽球</Text>
+          <Card.Header title="快来评论吧" extra="500❤" />
+          <Card.Body>
+            <Flex style={{marginLeft: 15}}>
+              <Text>龙傲天:</Text>
+              <Text>龙泽球666牛逼啊</Text>
             </Flex>
-            <Text style={{marginTop: 5}}>666</Text>
-          </View>
+            <Flex style={{marginLeft: 15}}>
+              <Text>高雪纯:</Text>
+              <Text>是在下菜了 学到了</Text>
+            </Flex>
+          </Card.Body>
+          <Card.Footer extra="查看更多" />
         </Card>
       </WingBlank>
     </ScrollView>
@@ -83,6 +115,23 @@ const styles = StyleSheet.create({
     height: undefined,
     resizeMode: 'cover',
     marginLeft: 10,
+  },
+  slider: {
+    flex: 1,
+  },
+  sliderImg: {
+    width: undefined,
+    resizeMode: 'cover',
+  },
+  ava: {
+    width: scaleSizeW(70),
+    aspectRatio: 1,
+    height: undefined,
+    borderRadius: scaleSizeW(35),
+  },
+  user: {
+    padding: 5,
+    justifyContent: 'flex-start',
   },
 });
 export default DynamicDetail;
