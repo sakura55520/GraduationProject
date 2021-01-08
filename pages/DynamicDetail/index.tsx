@@ -85,7 +85,7 @@ const DynamicDetail = ({navigation}: {navigation: any}) => {
               <Text>龙泽球666牛逼啊</Text>
             </Flex>
             <Flex style={{marginLeft: 15}}>
-              <Text>高雪纯:</Text>
+              <Text>龙泽球:</Text>
               <Text>是在下菜了 学到了</Text>
             </Flex>
           </Card.Body>
