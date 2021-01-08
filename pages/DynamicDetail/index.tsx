@@ -71,7 +71,7 @@ const DynamicDetail = ({navigation}: {navigation: any}) => {
               />
               <View style={{marginLeft: 10}}>
                 <Text style={{fontSize: 20}}>&yen;118</Text>
-                <Text>韩国东大门 北京天安门潮牌</Text>
+                <Text>韩国东大门123 北京天安门潮牌</Text>
               </View>
             </Flex>
           </Card>
